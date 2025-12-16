@@ -2,5 +2,5 @@
 layout: default
 title: Notes
 ---
-- [ML learning course subtitles, by Tengyu Ma](notes/ML_Ma/)
-- [ML learning course subtitles, by Andrew Ng](notes/ML_Ng/)
+- [ML learning course subtitles, by Tengyu Ma](ML_Ma/)
+- [ML learning course subtitles, by Andrew Ng](ML_Ng/)
