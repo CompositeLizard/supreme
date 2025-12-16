@@ -1,4 +1,3 @@
-title: My Notes
 markdown: kramdown
 kramdown:
   math_engine: mathjax
