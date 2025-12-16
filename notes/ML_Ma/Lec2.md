@@ -182,11 +182,9 @@ The label for example $$i$$ is $$y^{(i)}$$, which is the price in our running ex
 
 ## 14) Writing the Whole Training Set as a Matrix
 
-Now we package all training inputs into a matrix $$X$$ with one row per example. If there are $$n$$ examples, then $$X$$ has $$n$$ rows. Because we introduced $$x_0 = 1$$, each example has $$d+1$$ coordinates, so $$X \in \mathbb{R}^{n \times (d+1)}$$:
+Now we package all training inputs into a matrix $X$ with one row per example. If there are $$n$$ examples, then $$X$$ has $$n$$ rows. Because we introduced $$x_0 = 1$$, each example has $d+1$ coordinates, so $$X \in \mathbb{R}^{n \times (d+1)}$$:
 
-$$
-X \in \mathbb{R}^{n \times (d+1)}.
-$$
+$X \in \mathbb{R}^{n \times (d+1)}.$
 
 That “$$+1$$” comes entirely from the extra constant feature $$x_0$$. It’s a common place people get tripped up, so it’s worth emphasizing.
 
@@ -234,7 +232,7 @@ $$
 
 This optimization problem is what we mean by “training” the linear regression model. For linear regression, what’s nice is that we can solve it cleanly, and later we’ll see algorithms (like gradient descent) that generalize to more complex models.
 
-## 18) Question: Why Include the $$\tfrac{1}{2}$$?
+## 18) Question: Why Include the $\tfrac{1}{2}$?
 
 A student asked: why include the $$\tfrac{1}{2}$$ in the least-squares cost?
 
@@ -283,8 +281,8 @@ $$
 $$
 
 Here:
-- $$\nabla_\theta J(\theta^{(t)})$$ is the gradient of the cost with respect to $$\theta$$
-- $$\alpha$$ is the **learning rate** (step size)
+- $\nabla_\theta J(\theta^{(t)})$ is the gradient of the cost with respect to $$\theta$$
+- $\alpha$ is the **learning rate** (step size)
 
 This is easiest to picture in one dimension: the derivative tells you which direction the function increases, so going the opposite way decreases the function.
 
@@ -292,12 +290,12 @@ This is easiest to picture in one dimension: the derivative tells you which dire
 
 That’s what $$\alpha$$ controls.
 
-- If $$\alpha$$ is too large, you can overshoot and bounce around or diverge.
-- If $$\alpha$$ is too small, you make tiny progress and the algorithm is very slow.
+- If $\alpha$ is too large, you can overshoot and bounce around or diverge.
+- If $\alpha$ is too small, you make tiny progress and the algorithm is very slow.
 
-In practice, you often pick $$\alpha$$ and adjust it with trial and error. There’s theory for simple convex settings, and modern deep learning often uses “adaptive” optimizers that tune step sizes automatically, but the basic idea is still the same.
+In practice, you often pick $\alpha$ and adjust it with trial and error. There’s theory for simple convex settings, and modern deep learning often uses “adaptive” optimizers that tune step sizes automatically, but the basic idea is still the same.
 
-After stepping, you get a new point $$\theta^{(1)}$$, then you repeat: compute the gradient again, step again, and so on.
+After stepping, you get a new point $\theta^{(1)}$, then you repeat: compute the gradient again, step again, and so on.
 
 ## 24) Questions About Notation and High Dimensions
 
@@ -320,7 +318,7 @@ $$
 \ \text{is small},
 $$
 
-or when the gradient norm $$\|\nabla_\theta J(\theta^{(t)})\|$$ is small, or after a fixed number of steps. You set a tolerance (sometimes near machine precision like $$10^{-6}$$ or $$10^{-16}$$, or larger if you just want a fast approximate solution).
+or when the gradient norm $\|\nabla_\theta J(\theta^{(t)})\|$ is small, or after a fixed number of steps. You set a tolerance (sometimes near machine precision like $$10^{-6}$$ or $$10^{-16}$$, or larger if you just want a fast approximate solution).
 
 For general non-convex problems, gradient descent can converge to a poor local minimum. In a convex bowl-shaped objective, that issue disappears: every local minimum is global. Least squares is convex, which is why it behaves well here.
 
@@ -447,7 +445,7 @@ $$
 
 This “loops over all $$j$$ at once” by treating $$\theta$$ and $$x^{(i)}$$ as vectors.
 
-## 30) Question: Is the Same Learning Rate Used for Every $$\theta_j$$?
+## 30) Question: Is the Same Learning Rate Used for Every $\theta_j$?
 
 A student asked whether $$\alpha$$ is the same for every coordinate.
 
