@@ -112,5 +112,5 @@ When you predict for a particular example, you take its observed $x_1$ value, lo
 
 At this scale, the linear model doesn’t look unreasonable: there’s a clear trend with some error, and it gives us a first predictive model that is simple, familiar, and easy to analyze.
 
-That’s the setup. Next, we’ll make “good” precise by defining an error measure and then showing how gradient descent (batch and stochastic) finds parameters (\theta) that fit the data.
+That’s the setup. Next, we’ll make “good” precise by defining an error measure and then showing how gradient descent (batch and stochastic) finds parameters $\theta$ that fit the data.
 
