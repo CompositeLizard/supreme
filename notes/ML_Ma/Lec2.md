@@ -171,7 +171,7 @@ Now we package all training inputs into a matrix $X$ with one row per example. I
 
 $X \in \mathbb{R}^{n \times (d+1)}.$
 
-That “$+1$” comes entirely from the extra constant feature $$x_0$$. It’s a common place people get tripped up, so it’s worth emphasizing.
+That +1 comes entirely from the extra constant feature $$x_0$$. It’s a common place people get tripped up, so it’s worth emphasizing.
 
 At this point, we have many equivalent ways to write the dataset—pairs, vectors, matrices—but we still haven’t answered the core question: **how do we choose a good model?**
 
@@ -404,6 +404,119 @@ This “loops over all $$j$$ at once” by treating $$\theta$$ and $$x^{(i)}$$ a
 ## 30) Question: Is the Same Learning Rate Used for Every $\theta_j$?
 
 A student asked whether $\alpha$ is the same for every coordinate.
+
+## 31) Where We Are So Far: Fitting a Line and Why This Setup Matters
+
+At this point, we know how to fit a line. That might not feel like a huge accomplishment, but it’s actually pretty cool. We did it in a deliberately general way so that the same framework will extend to more models. I’ll make that claim concrete over the next two lectures.
+
+The vector equation we derived is simply a compact way of writing everything we computed. It’s specific to the linear model we started with: the gradient term in the update matches the expression we derived earlier, and that’s why this particular update rule “popped out.” We’ll come back to that connection again.
+
+## 32) Why This Matters in Practice: The Full Gradient Can Be Huge
+
+A practical issue in machine learning is that the batch gradient update contains a sum over the entire dataset. In modern machine learning, datasets can have millions or billions of points. It’s not uncommon to train on enormous corpora—every sentence on the web over many years, or every token in those sentences. In settings like that, even one full pass over the data can be expensive.
+
+That extreme case is meant to build intuition, but the same concern shows up at smaller scales too. Even with hundreds of thousands of images, you might not want to process the entire dataset before you take a single step—especially because your initial model is probably not very good. If random initialization already worked well, we wouldn’t bother training.
+
+### Question: What do the superscripts $$t$$ and $$t+1$$ mean?
+
+They index the **iteration step**. We start with $$\theta^{(0)}$$, then update to $$\theta^{(1)}$$, $$\theta^{(2)}$$, and so on. The update rule specifies how to go from $\theta^{(t)}$ to $\theta^{(t+1)}$.
+
+## 33) When Do We Stop Gradient Descent?
+
+We usually take steps until the algorithm “converges,” or we take a fixed number of steps.
+
+For nice bowl-shaped objectives, there’s a clean story: as you get closer to the optimum, the gradient gets smaller, and you can use that to reason about how close you are. For messier objectives—especially those common in modern ML—that story breaks down. Often, we don’t truly know whether we’ve converged in a formal sense. In practice, people train until performance stops improving, or until some budget runs out.
+
+A real-world example is that with very large models (hundreds of billions of parameters), people sometimes discover that training longer would have helped—and they didn’t realize it at the time. It’s not rare for someone to forget a model is still training and come back later to find it improved. That’s part of why I don’t over-emphasize formal stopping rules in the modern setting.
+
+### Can the update “reverse direction” if we overshoot?
+
+Yes. If your step size is too large and you overshoot, then at the new point the gradient will point back the other way, and you can get a ping-pong effect. Some amount of oscillation can happen naturally.
+
+### Can the gradient be zero even if predictions aren’t perfect?
+
+It can happen that the gradient provides no useful direction even when the model is not fitting every point perfectly. In linear algebra terms, this can relate to issues like the system not being full rank. The broader point is that optimization can have “flat” regions or stationary points that don’t correspond to perfect fits.
+
+## 34) Local Minima, Initialization, and Modern Practice
+
+For non-convex objectives, initialization matters: starting in a different place can lead you to a different local minimum. In the convex case (like least squares for linear regression), that problem goes away because every local minimum is global. We’ll prove this kind of property later under the right conditions.
+
+Modern machine learning often uses objectives that are not convex. That’s why people care about initialization and why there are theoretical results showing that for some non-convex models, the *right* initialization can still guarantee finding a good solution.
+
+However, there’s also a practical constraint: training large models is expensive. If one run costs millions of dollars, you don’t want to restart the model many times just to try different initializations. Instead, the field has developed strong conventions—“folksonomies”—about what optimizers and settings to use, even when the formal justification is incomplete.
+
+## 35) Overfitting and Fitting the Training Data Exactly
+
+A classic concern is that if you fit your training data perfectly, you might generalize poorly—this is the intuition behind **overfitting**. We’ll cover that later (around lecture 10).
+
+At the same time, modern ML complicates this story. There are results showing that in some regimes you can interpolate (fit training data exactly) and still generalize well for certain classes of models. So the old “perfect fit implies overfitting” intuition is not always the whole story anymore, though overfitting remains a real concern in many settings.
+
+## 36) Batch vs. Stochastic vs. Mini-Batch Gradient Descent
+
+I’m not trying to push the normal equations today. The key practical topic I do want you to take away is the difference between **batch** and **stochastic/mini-batch** methods.
+
+### Batch Gradient Descent
+
+The batch update computes the gradient using *all* $$n$$ examples:
+
+$$
+\theta^{(t+1)}=\theta^{(t)}-
+\alpha
+\sum_{i=1}^{n}
+\left(h_{\theta^{(t)}}(x^{(i)}) - y^{(i)}\right)
+x^{(i)}.
+$$
+
+This is accurate but can be expensive when $$n$$ is huge.
+
+### Mini-Batch Gradient Descent
+
+Instead of summing over all examples, we select a subset $$B$$ of indices (a mini-batch), typically much smaller than $$n$$:
+
+- Choose a mini-batch $$B \subseteq \{1,\dots,n\}$$ with $$|B| \ll n$$ (often by shuffling and taking the next block, or sampling).
+- Compute an estimate of the gradient using only examples in $$B$$.
+- Take a step using that estimate.
+
+A mini-batch update looks like:
+
+$$\theta^{(t+1)}=\theta^{(t)}-
+\alpha
+\sum_{i \in B}
+\left(h_{\theta^{(t)}}(x^{(i)}) - y^{(i)}\right)
+x^{(i)}.
+$$
+
+You can even take $|B| = 1$, which is **stochastic gradient descent (SGD)**.
+
+### Tradeoffs
+
+- Smaller batches are **faster per step**, but the gradient estimate is **noisier**.
+- Full batch gradients are **accurate**, but **slow**.
+
+In practice, people use mini-batches: large enough to run efficiently on modern parallel hardware, but small enough that updates are fast. Most modern ML toolkits (PyTorch, JAX, TensorFlow) have built-in support for mini-batching.
+
+Despite the noise, these methods are surprisingly robust. There are strong results showing convergence under broad conditions, including work like the *Hogwild!* paper, which showed you can run SGD in very asynchronous, “messy” settings and still converge.
+
+### Why Does Mini-Batching Often Make Sense?
+
+Many datasets have heavy redundancy—near-duplicate examples. If your dataset contains repeated or highly similar items, computing the full gradient can waste time reprocessing the same information. Mini-batch sampling can make progress faster by using representative slices of the data rather than scanning all of it every step.
+
+For example, if you think about images on a phone, you might have many pictures that are extremely similar. Large-scale ML often operates in exactly these regimes: huge datasets with dense, repeated content.
+
+## 37) Wrap-Up and What Comes Next
+
+This will be one of the drier lectures, because we set up a lot of notation and worked through the mechanics carefully:
+
+- basic supervised learning definitions
+- fitting a line (linear regression)
+- batch vs. stochastic/mini-batch gradient descent
+- how the same optimization pattern will carry over to new models
+
+Next time we generalize from regression to **classification**, and then to a broad family of statistical models called the **exponential family**. The core ideas and the optimization machinery we built today will carry over.
+
+The normal equations are relatively straightforward, and the existing notes cover them well. If you run into trouble, post on Ed and I’m happy to help.
+
+Thanks for your time and attention, and I hope to see you on Monday.
 
 In the basic gradient descent rule shown here, yes: $\alpha$ is a single step size shared across all coordinates, typically fixed per iteration (though in practice it may change over time, e.g., decay with $t$).
 
