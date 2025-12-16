@@ -86,6 +86,26 @@
       border-radius: 3px;
       padding: 0.2em 0.4em;
     }
+
+  .site-header{
+    max-width: 45rem;
+    margin: 0 auto 1.2rem auto;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+  }
+  
+  .home-link{
+    font-weight: 600;
+  }
+  
+  .site-title{
+    opacity: 0.8;
+    font-size: 0.95em;
+  }
+    
   </style>
   
   <script>
@@ -96,6 +116,11 @@
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
 </head>
 <body>
+  <header class="site-header">
+    <a class="home-link" href="{{ '/' | relative_url }}">Home</a>
+    <span class="site-title">{{ site.title }}</span>
+  </header>
+
   <main>
     {{ content }}
   </main>
