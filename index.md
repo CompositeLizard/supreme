@@ -6,5 +6,5 @@ title: Home
 Welcome. This is just for reading.
 
 ## Notes
-- [Topology](notes/topology)
-- [Analysis](notes/analysis)
+- [ML_Ma](notes/ML_Ma)
+- [ML_Ng](notes/ML_Ng)
