@@ -1,2 +1,2 @@
-- [Lec1](Lec1)
-- [Lec2](Lec2)
+- [Lec1](Lec1.md)
+- [Lec2](Lec2.md)
