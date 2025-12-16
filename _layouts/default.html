@@ -132,25 +132,25 @@
     <span class="site-title">{{ site.title }}</span>
   </header>
 
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="{{ '/' | relative_url }}">Home</a>
+    {% assign parts = page.url | remove: site.baseurl | split: '/' %}
+    {% assign built = "" %}
+    {% for p in parts %}
+      {% if p != "" %}
+        {% assign built = built | append: "/" | append: p %}
+        {% if forloop.last %}
+          <span> / {{ p | replace: ".html","" }}</span>
+        {% else %}
+          <span> / </span><a href="{{ built | relative_url }}">{{ p }}</a>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  </nav>
+  
   <main>
     {{ content }}
   </main>
 </body>
-
-<nav class="breadcrumbs" aria-label="Breadcrumb">
-  <a href="{{ '/' | relative_url }}">Home</a>
-  {% assign parts = page.url | remove: site.baseurl | split: '/' %}
-  {% assign built = "" %}
-  {% for p in parts %}
-    {% if p != "" %}
-      {% assign built = built | append: "/" | append: p %}
-      {% if forloop.last %}
-        <span> / {{ p | replace: ".html","" }}</span>
-      {% else %}
-        <span> / </span><a href="{{ built | relative_url }}">{{ p }}</a>
-      {% endif %}
-    {% endif %}
-  {% endfor %}
-</nav>
   
 </html>
