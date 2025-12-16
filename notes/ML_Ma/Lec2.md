@@ -1,3 +1,5 @@
+---
+---
 ## 1) Welcome and How This Three-Lecture Block Will Work
 
 Hello—welcome to CS229. We’re starting a block of three lectures that I have the privilege of teaching, where we’ll walk through the building blocks and basics.
