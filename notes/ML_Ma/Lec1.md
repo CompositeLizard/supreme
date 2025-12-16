@@ -1,3 +1,7 @@
+---
+layout: default
+title: Lec1
+---
 ## 1) Course Welcome and Instructor Introductions
 
 My name is Tony Ma. This quarter, the course will be taught by two instructors: me and Chris. I work on machine learning and machine learning theory, including theory across different areas of machine learning—reinforcement learning, representation learning, supervised learning, and related topics.
