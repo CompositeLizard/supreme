@@ -314,8 +314,7 @@ Now let’s compute the derivatives, and connect back to the fact that $$J(\thet
 Recall the least-squares objective:
 
 $$
-J(\theta)
-=
+J(\theta)=
 \frac{1}{2}\sum_{i=1}^{n}
 \left(h_\theta(x^{(i)}) - y^{(i)}\right)^2.
 $$
@@ -323,8 +322,7 @@ $$
 We want the partial derivative with respect to the $$j$$-th parameter $$\theta_j$$:
 
 $$
-\frac{\partial}{\partial \theta_j} J(\theta)
-=
+\frac{\partial}{\partial \theta_j} J(\theta)=
 \frac{\partial}{\partial \theta_j}
 \left(
 \frac{1}{2}\sum_{i=1}^{n}
@@ -335,8 +333,7 @@ $$
 Because differentiation is linear, we can push the derivative inside the sum:
 
 $$
-\frac{\partial}{\partial \theta_j} J(\theta)
-=
+\frac{\partial}{\partial \theta_j} J(\theta)=
 \sum_{i=1}^{n}
 \frac{\partial}{\partial \theta_j}
 \left(
@@ -348,8 +345,7 @@ $$
 Differentiate the square term. The factor $$\tfrac{1}{2}$$ cancels the 2 from differentiating $$\left(\cdot\right)^2$$:
 
 $$
-\frac{\partial}{\partial \theta_j} J(\theta)
-=
+\frac{\partial}{\partial \theta_j} J(\theta)=
 \sum_{i=1}^{n}
 \left(h_\theta(x^{(i)}) - y^{(i)}\right)
 \cdot
@@ -358,8 +354,8 @@ $$
 
 This expression has a nice interpretation:
 
-- $$\left(h_\theta(x^{(i)}) - y^{(i)}\right)$$ is the **signed error** (misprediction).
-- $$\frac{\partial}{\partial \theta_j} h_\theta(x^{(i)})$$ tells you how the model’s prediction changes as you change parameter $$\theta_j$$.
+- $\left(h_\theta(x^{(i)}) - y^{(i)}\right)$ is the **signed error** (misprediction).
+- $\frac{\partial}{\partial \theta_j} h_\theta(x^{(i)})$ tells you how the model’s prediction changes as you change parameter $$\theta_j$$.
 
 This “error times derivative” structure is a basic template that will reappear constantly (it resembles a simple chain-rule pattern).
 
@@ -367,61 +363,38 @@ This “error times derivative” structure is a basic template that will reappe
 
 For linear regression:
 
-$$
-h_\theta(x) = \sum_{k=0}^{d} \theta_k x_k.
-$$
+$h_\theta(x) = \sum_{k=0}^{d} \theta_k x_k.$
 
 Then:
 
-$$
-\frac{\partial}{\partial \theta_j} h_\theta(x) = x_j,
-$$
+$\frac{\partial}{\partial \theta_j} h_\theta(x) = x_j,$
 
 and at a specific training example:
 
-$$
-\frac{\partial}{\partial \theta_j} h_\theta(x^{(i)}) = x^{(i)}_j.
-$$
+$\frac{\partial}{\partial \theta_j} h_\theta(x^{(i)}) = x^{(i)}_j.$
 
 So the gradient component becomes:
 
-$$
-\frac{\partial}{\partial \theta_j} J(\theta)
-=
-\sum_{i=1}^{n}
-\left(h_\theta(x^{(i)}) - y^{(i)}\right) x^{(i)}_j.
-$$
+$\frac{\partial}{\partial \theta_j} J(\theta)=\sum_{i=1}^{n}\left(h_\theta(x^{(i)}) - y^{(i)}\right) x^{(i)}_j.$
 
 ## 28) Batch Gradient Descent Update (Coordinate Form)
 
 Plugging this into the gradient descent update, the $$j$$-th coordinate update is:
 
-$$
-\theta_j^{(t+1)}
-=
-\theta_j^{(t)}
--
-\alpha
-\sum_{i=1}^{n}
-\left(h_{\theta^{(t)}}(x^{(i)}) - y^{(i)}\right)
-x^{(i)}_j.
-$$
+$\theta_j^{(t+1)}=\theta_j^{(t)}-\alpha\sum_{i=1}^{n}\left(h_{\theta^{(t)}}(x^{(i)}) - y^{(i)}\right)x^{(i)}_j.$
 
 At this stage, we are summing over *all* training examples each step, which is why this is called **batch gradient descent**. We’ll contrast this with stochastic gradient descent soon.
 
 The indices matter:
-- $$j$$ indexes the parameter/feature coordinate.
-- $$i$$ indexes the training example.
+- $j$ indexes the parameter/feature coordinate.
+- $i$ indexes the training example.
 
 ## 29) Vector Notation (All Coordinates at Once)
 
 Using vector notation, we can write the same idea more compactly as a single vector update:
 
 $$
-\theta^{(t+1)}
-=
-\theta^{(t)}
--
+\theta^{(t+1)}=\theta^{(t)}-
 \alpha
 \sum_{i=1}^{n}
 \left(h_{\theta^{(t)}}(x^{(i)}) - y^{(i)}\right)
@@ -432,9 +405,9 @@ This “loops over all $$j$$ at once” by treating $$\theta$$ and $$x^{(i)}$$ a
 
 ## 30) Question: Is the Same Learning Rate Used for Every $\theta_j$?
 
-A student asked whether $$\alpha$$ is the same for every coordinate.
+A student asked whether $\alpha$ is the same for every coordinate.
 
-In the basic gradient descent rule shown here, yes: $$\alpha$$ is a single step size shared across all coordinates, typically fixed per iteration (though in practice it may change over time, e.g., decay with $$t$$).
+In the basic gradient descent rule shown here, yes: $\alpha$ is a single step size shared across all coordinates, typically fixed per iteration (though in practice it may change over time, e.g., decay with $t$).
 
 More sophisticated methods can use different effective step sizes per coordinate (adaptive optimizers), but for now you should think of $$\alpha$$ as one small constant chosen so steps are not too large.
 
