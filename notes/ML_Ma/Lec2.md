@@ -117,7 +117,7 @@ That’s the setup. Next, we’ll make “good” precise by defining an error m
 
 ## 10) Generalizing to Multiple Features
 
-Now I want to generalize the model. Imagine we have a dataset with many features. Using the house-price example, we might have features like **size**, **bedrooms**, and **lot size**, and the target **price**. Here, **price** is our $$y$$, and the features are our $$x$$'s. I’ll write some example numbers just to keep the notation concrete—the specific values don’t matter. What matters is how we index the first data point, the second data point, and so on, and how those map into feature coordinates like $$x^{(1)}_1$$, $$x^{(2)}_1$$, etc.
+Now I want to generalize the model. Imagine we have a dataset with many features. Using the house-price example, we might have features like **size**, **bedrooms**, and **lot size**, and the target **price**. Here, **price** is our $y$, and the features are our $x$'s. I’ll write some example numbers just to keep the notation concrete—the specific values don’t matter. What matters is how we index the first data point, the second data point, and so on, and how those map into feature coordinates like $x^{(1)}_1$, $x^{(2)}_1$, etc.
 
 ## 11) Turning an Affine Model into a Linear One
 
@@ -127,13 +127,13 @@ We adopt the convention:
 
 $x_0 \equiv 1.$
 
-With that convention, the intercept becomes $$\theta_0 x_0$$, so the whole expression is a linear function of the feature vector. This is purely a notational convenience—don’t get stuck on it.
+With that convention, the intercept becomes $\theta_0 x_0$, so the whole expression is a linear function of the feature vector. This is purely a notational convenience—don’t get stuck on it.
 
 ## 12) The Linear Model in $$d$$ Dimensions
 
 With $$d$$ (original) features, the model becomes:
 
-$h_\theta(x) \;=\; \theta_0 x_0 + \theta_1 x_1 + \cdots + \theta_d x_d\;=\; \sum_{j=0}^{d} \theta_j x_j,$
+$h_\theta(x) = \theta_0 x_0 + \theta_1 x_1 + \cdots + \theta_d x_d = \sum_{j=0}^{d} \theta_j x_j,$
 
 with the reminder:
 
@@ -145,14 +145,14 @@ This now supports high-dimensional inputs. High-dimensional spaces behave differ
 
 To simplify notation, we use column vectors. For the $$i$$-th example, define the feature vector:
 
-$x^{(i)} \;=\;\begin{bmatrix}x^{(i)}_0 \\x^{(i)}_1 \\\vdots \\x^{(i)}_d\end{bmatrix},$
+$x^{(i)} = \begin{bmatrix}x^{(i)}_0 \\x^{(i)}_1 \\\vdots \\x^{(i)}_d\end{bmatrix},$
 
 where $$x^{(i)}_0 = 1$$ and, for example, $$x^{(i)}_1$$ might be the size feature (like 2104 square feet), $$x^{(i)}_2$$ might be bedrooms, and so on.
 
 The parameter vector is:
 
 $$
-\theta \;=\;
+\theta =
 \begin{bmatrix}
 \theta_0 \\
 \theta_1 \\
@@ -171,7 +171,7 @@ Now we package all training inputs into a matrix $X$ with one row per example. I
 
 $X \in \mathbb{R}^{n \times (d+1)}.$
 
-That “$$+1$$” comes entirely from the extra constant feature $$x_0$$. It’s a common place people get tripped up, so it’s worth emphasizing.
+That “$+1$” comes entirely from the extra constant feature $$x_0$$. It’s a common place people get tripped up, so it’s worth emphasizing.
 
 At this point, we have many equivalent ways to write the dataset—pairs, vectors, matrices—but we still haven’t answered the core question: **how do we choose a good model?**
 
@@ -186,14 +186,13 @@ For historical and computational reasons, we look at **squared residuals**. You 
 We will write the hypothesis explicitly as a function parameterized by $$\theta$$:
 
 $$
-h_\theta(x) \;=\; \sum_{j=0}^{d} \theta_j x_j.
+h_\theta(x) = \sum_{j=0}^{d} \theta_j x_j.
 $$
 
 To pick a good model, we want $$h_\theta(x^{(i)})$$ to be close to $$y^{(i)}$$ for paired training examples. We formalize this by defining a **cost function** (also called the least-squares objective):
 
 $$
-J(\theta)
-\;=\;
+J(\theta)=
 \frac{1}{2}
 \sum_{i=1}^{n}
 \left(h_\theta\!\left(x^{(i)}\right) - y^{(i)}\right)^2.
@@ -260,8 +259,7 @@ Now suppose we’re at some parameter value $$\theta^{(t)}$$ and we can “look 
 The update rule is:
 
 $$
-\theta^{(t+1)}
-=
+\theta^{(t+1)}=
 \theta^{(t)} - \alpha \,\nabla_\theta J(\theta^{(t)}).
 $$
 
