@@ -43,9 +43,9 @@ Let’s talk about **supervised learning**. This whole block is supervised learn
 
 We want a **prediction function**, which we’ll consistently denote by %h5. It maps from some set $\mathcal{X}$ to some set $\mathcal{Y}$:
 
-$h: \mathcal{X} \to \mathcal{Y}.$
+$$h: \mathcal{X} \to \mathcal{Y}.$$
 
-Before getting formal, here are examples of what (\mathcal{X}) and (\mathcal{Y}) could be:
+Before getting formal, here are examples of what $\mathcal{X}$ and $\mathcal{Y}$ could be:
 
 * $\mathcal{X}$: images, and $\mathcal{Y}$: labels like “cat,” “dog,” and so on. “Does this image contain a cat?” is the simplest yes/no version.
 * $\mathcal{X}$: text, and $\mathcal{Y}$: labels like “hate speech” vs. “not hate speech.” This is an example where we’d like machine learning to do better than it currently does in practice.
@@ -123,7 +123,7 @@ Now I want to generalize the model. Imagine we have a dataset with many features
 
 ## 11) Turning an Affine Model into a Linear One
 
-I called the model “linear,” but if you’re being precise, the form $$\theta_0 + \theta_1 x_1$$ is actually **affine** because of the intercept term $$\theta_0$$. The standard trick to make the notation genuinely linear is to introduce a new feature $$x_0$$ that is always equal to 1.
+I called the model “linear,” but if you’re being precise, the form $\theta_0 + \theta_1 x_1$ is actually **affine** because of the intercept term $\theta_0$. The standard trick to make the notation genuinely linear is to introduce a new feature $x_0$ that is always equal to 1.
 
 We adopt the convention:
 
@@ -133,7 +133,7 @@ With that convention, the intercept becomes $\theta_0 x_0$, so the whole express
 
 ## 12) The Linear Model in $$d$$ Dimensions
 
-With $$d$$ (original) features, the model becomes:
+With $d$ (original) features, the model becomes:
 
 $h_\theta(x) = \theta_0 x_0 + \theta_1 x_1 + \cdots + \theta_d x_d = \sum_{j=0}^{d} \theta_j x_j,$
 
@@ -141,15 +141,23 @@ with the reminder:
 
 $x_0 = 1.$
 
-This now supports high-dimensional inputs. High-dimensional spaces behave differently than low-dimensional ones, and they’re often where machine learning gets interesting. In many modern settings, we embed data into a vector space (sometimes with hundreds of dimensions) and then train a linear model on top. In this course, for now, the features will be human-interpretable and come directly from the table: given a row $$x^{(i)}$$, we fill in values like size, bedrooms, lot size, and so on, and then compute a prediction.
+This now supports high-dimensional inputs. High-dimensional spaces behave differently than low-dimensional ones, and they’re often where machine learning gets interesting. In many modern settings, we embed data into a vector space (sometimes with hundreds of dimensions) and then train a linear model on top. In this course, for now, the features will be human-interpretable and come directly from the table: given a row $x^{(i)}$, we fill in values like size, bedrooms, lot size, and so on, and then compute a prediction.
 
 ## 13) Vector Notation for Features and Parameters
 
 To simplify notation, we use column vectors. For the $$i$$-th example, define the feature vector:
 
-$x^{(i)} = \begin{bmatrix}x^{(i)}_0 \\x^{(i)}_1 \\\vdots \\x^{(i)}_d\end{bmatrix},$
+$$
+x^{(i)} =
+\begin{bmatrix}
+x^{(i)}_0 \\
+x^{(i)}_1 \\
+\vdots \\
+x^{(i)}_d
+\end{bmatrix}
+$$
 
-where $$x^{(i)}_0 = 1$$ and, for example, $$x^{(i)}_1$$ might be the size feature (like 2104 square feet), $$x^{(i)}_2$$ might be bedrooms, and so on.
+where $$x^{(i)}_0 = 1$$ and, for example, $x^{(i)}_1$ might be the size feature (like 2104 square feet), $x^{(i)}_2$ might be bedrooms, and so on.
 
 The parameter vector is:
 
@@ -163,9 +171,9 @@ $$
 \end{bmatrix}.
 $$
 
-The pedantry here is intentional: we’ll reuse this exact mapping between “raw data row” and “feature vector” in many different settings, even when the meaning of $$\theta$$ changes across models.
+The pedantry here is intentional: we’ll reuse this exact mapping between “raw data row” and “feature vector” in many different settings, even when the meaning of $\theta$ changes across models.
 
-The label for example $$i$$ is $$y^{(i)}$$, which is the price in our running example. Each pair $$\left(x^{(i)}, y^{(i)}\right)$$ is a **training example**.
+The label for example $i$ is $y^{(i)}$, which is the price in our running example. Each pair $\left(x^{(i)}, y^{(i)}\right)$ is a **training example**.
 
 ## 14) Writing the Whole Training Set as a Matrix
 
@@ -185,7 +193,7 @@ For historical and computational reasons, we look at **squared residuals**. You 
 
 ## 16) Defining the Hypothesis and the Cost Function
 
-We will write the hypothesis explicitly as a function parameterized by $$\theta$$:
+We will write the hypothesis explicitly as a function parameterized by $\theta$:
 
 $$
 h_\theta(x) = \sum_{j=0}^{d} \theta_j x_j.
@@ -197,18 +205,18 @@ $$
 J(\theta)=
 \frac{1}{2}
 \sum_{i=1}^{n}
-\left(h_\theta\!\left(x^{(i)}\right) - y^{(i)}\right)^2.
+\left(h_\theta \left(x^{(i)}\right) - y^{(i)}\right)^2.
 $$
 
-- $$h_\theta\!\left(x^{(i)}\right)$$ is the prediction on the $$i$$-th input.
-- $$y^{(i)}$$ is the corresponding label.
+- $h_\theta \left(x^{(i)}\right)$ is the prediction on the $i$-th input.
+- $y^{(i)}$ is the corresponding label.
 - The square penalizes large errors more heavily.
 
-The factor of $$\tfrac{1}{2}$$ is just a convenience: when we take derivatives, the 2 cancels. It does **not** change which $$\theta$$ minimizes the cost.
+The factor of $\tfrac{1}{2}$ is just a convenience: when we take derivatives, the 2 cancels. It does **not** change which $$\theta$$ minimizes the cost.
 
 ## 17) What We Actually Solve
 
-Our model is completely determined by the parameters $$\theta_0, \theta_1, \ldots, \theta_d$$. By restricting ourselves to this class of linear models, we reduce the search from “all possible functions” to “functions representable by a weight vector $$\theta$$.”
+Our model is completely determined by the parameters $\theta_0, \theta_1, \ldots, \theta_d$. By restricting ourselves to this class of linear models, we reduce the search from “all possible functions” to “functions representable by a weight vector $\theta$.”
 
 A “good model” now means: choose the parameters that minimize the cost function:
 
@@ -222,17 +230,17 @@ This optimization problem is what we mean by “training” the linear regressio
 
 A student asked: why include the $$\tfrac{1}{2}$$ in the least-squares cost?
 
-The key point is that we only care about the **minimizer**, not the absolute scale of the cost. Multiplying the cost by a constant doesn’t change which $$\theta$$ minimizes it. The $$\tfrac{1}{2}$$ is included because it makes derivatives cleaner: when differentiating $$\left(\cdot\right)^2$$, a factor of 2 appears and cancels the $$\tfrac{1}{2}$$.
+The key point is that we only care about the **minimizer**, not the absolute scale of the cost. Multiplying the cost by a constant doesn’t change which $\theta$ minimizes it. The $\tfrac{1}{2}$ is included because it makes derivatives cleaner: when differentiating $\left(\cdot\right)^2$, a factor of 2 appears and cancels the $\tfrac{1}{2}$.
 
 ## 19) Why This Setup Matters
 
 We are setting up a pattern that will repeat throughout the course:
 
-1. Choose a hypothesis class (parameterized by $$\theta$$).
+1. Choose a hypothesis class (parameterized by $\theta$).
 2. Define a cost function that penalizes bad predictions.
-3. Solve $$\min_\theta J(\theta)$$ using optimization methods.
+3. Solve $\min_\theta J(\theta)$ using optimization methods.
 
-We’ll replace $$J(\theta)$$ with different cost functions for classification and other statistical models, but much of what comes next—how we optimize, how we compute gradients, how we interpret the solution—will carry over.
+We’ll replace $J(\theta)$ with different cost functions for classification and other statistical models, but much of what comes next—how we optimize, how we compute gradients, how we interpret the solution—will carry over.
 
 
 ## 20) Solving the Optimization Problem: Why We Use Gradient Descent
@@ -245,7 +253,7 @@ So we’ll use an approach that generalizes: **gradient-based optimization**.
 
 ## 21) Intuition: The Shape of the Cost Function
 
-Imagine $$J(\theta)$$ is our cost function. As an aside, least-squares for linear regression is convex, so it really does have a nice bowl shape. But when I draw a function with bumps and valleys, I’m illustrating what can happen in more general machine learning problems.
+Imagine $J(\theta)$ is our cost function. As an aside, least-squares for linear regression is convex, so it really does have a nice bowl shape. But when I draw a function with bumps and valleys, I’m illustrating what can happen in more general machine learning problems.
 
 If a function is non-convex, it can have **local minima**—points that are lower than nearby points—but not the best overall. In convex problems, every local minimum is also a global minimum. We’ll return to that later; for now, just keep the intuition: gradient descent can get stuck in bad places for general objectives, but for least squares we’re in good shape.
 
@@ -290,7 +298,7 @@ A student asked about the “denominator” / notation: $$\nabla_\theta$$ just m
 
 ### How do we visualize the gradient in higher dimensions?
 
-One way to think about it: each component of the gradient is the slope along one coordinate direction. In 2D, you can imagine looking along the $$\theta_1$$ axis to get a 1D slice, compute its slope, then looking along $$\theta_2$$ to get the other slope. The gradient stacks those slopes into a vector that points in the direction of steepest ascent; stepping opposite it moves you downhill.
+One way to think about it: each component of the gradient is the slope along one coordinate direction. In 2D, you can imagine looking along the $\theta_1$ axis to get a 1D slice, compute its slope, then looking along $\theta_2$ to get the other slope. The gradient stacks those slopes into a vector that points in the direction of steepest ascent; stepping opposite it moves you downhill.
 
 High dimensions can be strange: objectives can have **saddles** (saddle points), where the surface curves up in one direction and down in another. We won’t worry about convergence details right now, but this is one reason optimization can be tricky in modern ML.
 
@@ -303,7 +311,7 @@ $$
 \ \text{is small},
 $$
 
-or when the gradient norm $\|\nabla_\theta J(\theta^{(t)})\|$ is small, or after a fixed number of steps. You set a tolerance (sometimes near machine precision like $$10^{-6}$$ or $$10^{-16}$$, or larger if you just want a fast approximate solution).
+or when the gradient norm $\|\nabla_\theta J(\theta^{(t)})\|$ is small, or after a fixed number of steps. You set a tolerance (sometimes near machine precision like $10^{-6}$ or $10^{-16}$, or larger if you just want a fast approximate solution).
 
 For general non-convex problems, gradient descent can converge to a poor local minimum. In a convex bowl-shaped objective, that issue disappears: every local minimum is global. Least squares is convex, which is why it behaves well here.
 
@@ -319,7 +327,7 @@ J(\theta)=
 \left(h_\theta(x^{(i)}) - y^{(i)}\right)^2.
 $$
 
-We want the partial derivative with respect to the $$j$$-th parameter $$\theta_j$$:
+We want the partial derivative with respect to the $j$-th parameter $\theta_j$:
 
 $$
 \frac{\partial}{\partial \theta_j} J(\theta)=
@@ -342,7 +350,7 @@ $$
 \right).
 $$
 
-Differentiate the square term. The factor $$\tfrac{1}{2}$$ cancels the 2 from differentiating $$\left(\cdot\right)^2$$:
+Differentiate the square term. The factor $\tfrac{1}{2}$ cancels the 2 from differentiating $\left(\cdot\right)^2$:
 
 $$
 \frac{\partial}{\partial \theta_j} J(\theta)=
