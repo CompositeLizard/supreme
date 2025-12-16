@@ -41,23 +41,20 @@ Let’s talk about **supervised learning**. This whole block is supervised learn
 
 We want a **prediction function**, which we’ll consistently denote by (h). It maps from some set (\mathcal{X}) to some set (\mathcal{Y}):
 
-[
-h: \mathcal{X} \to \mathcal{Y}.
-]
+$h: \mathcal{X} \to \mathcal{Y}.$
 
 Before getting formal, here are examples of what (\mathcal{X}) and (\mathcal{Y}) could be:
 
-* (\mathcal{X}): images, and (\mathcal{Y}): labels like “cat,” “dog,” and so on. “Does this image contain a cat?” is the simplest yes/no version.
-* (\mathcal{X}): text, and (\mathcal{Y}): labels like “hate speech” vs. “not hate speech.” This is an example where we’d like machine learning to do better than it currently does in practice.
+* $\mathcal{X}$: images, and (\mathcal{Y}): labels like “cat,” “dog,” and so on. “Does this image contain a cat?” is the simplest yes/no version.
+* $\mathcal{X}$: text, and (\mathcal{Y}): labels like “hate speech” vs. “not hate speech.” This is an example where we’d like machine learning to do better than it currently does in practice.
 * We’ll also use house data, which is a classic statistics and machine learning task.
 
 To make this supervised, we also need a **training set**. Formally, it’s just a set of pairs:
 
-[
-{(x_1, y_1), (x_2, y_2), \dots, (x_n, y_n)}.
-]
 
-Each (x_i \in \mathcal{X}) is an encoding of the input. For images, (x_i) could be bits, RGB values, or some representation of pixel intensities. For text, it might be ASCII/Unicode or some other representation. Later, we’ll almost always abstract this away and work in a vector space, and we’ll talk about where those vectors come from. Each (y_i \in \mathcal{Y}) is the label.
+${(x_1, y_1), (x_2, y_2), \dots, (x_n, y_n)}.$
+
+Each $x_i \in \mathcal{X}$ is an encoding of the input. For images, $x_i$ could be bits, RGB values, or some representation of pixel intensities. For text, it might be ASCII/Unicode or some other representation. Later, we’ll almost always abstract this away and work in a vector space, and we’ll talk about where those vectors come from. Each (y_i \in \mathcal{Y}) is the label.
 
 Given the training set, our job is to find a good hypothesis (h). We call it (h) partly because it’s a “hypothesis.”
 
@@ -104,16 +101,14 @@ We’ll start with a class of models called “linear.” If you’re a stickler
 
 With one feature (x_1) (say square footage), the model is:
 
-$[
-h(x) = \theta_0 + \theta_1 x_1.
-]$
+$h(x) = \theta_0 + \theta_1 x_1.$
 
-Here (\theta_0) and (\theta_1) are parameters (weights) of the model. Geometrically, this is a line.
+Here $\theta_0$ and $\theta_1$ are parameters (weights) of the model. Geometrically, this is a line.
 
-* $(\theta_0)$ is the intercept: the predicted value at (x_1 = 0).
-* $(\theta_1)$ is the slope.
+* $\theta_0$ is the intercept: the predicted value at $x_1 = 0$.
+* $\theta_1$ is the slope.
 
-When you predict for a particular example, you take its observed (x_1) value, locate it on the x-axis, and read off the corresponding y-value on the line. That value is your predicted price. The difference between the predicted and actual price is the residual, and soon we’ll define an objective that tries to make those residuals small in a principled way.
+When you predict for a particular example, you take its observed $x_1$ value, locate it on the x-axis, and read off the corresponding y-value on the line. That value is your predicted price. The difference between the predicted and actual price is the residual, and soon we’ll define an objective that tries to make those residuals small in a principled way.
 
 At this scale, the linear model doesn’t look unreasonable: there’s a clear trend with some error, and it gives us a first predictive model that is simple, familiar, and easy to analyze.
 
