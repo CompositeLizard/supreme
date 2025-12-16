@@ -125,9 +125,7 @@ I called the model “linear,” but if you’re being precise, the form $$\thet
 
 We adopt the convention:
 
-$$
-x_0 \equiv 1.
-$$
+$x_0 \equiv 1.$
 
 With that convention, the intercept becomes $$\theta_0 x_0$$, so the whole expression is a linear function of the feature vector. This is purely a notational convenience—don’t get stuck on it.
 
@@ -135,16 +133,11 @@ With that convention, the intercept becomes $$\theta_0 x_0$$, so the whole expre
 
 With $$d$$ (original) features, the model becomes:
 
-$$
-h_\theta(x) \;=\; \theta_0 x_0 + \theta_1 x_1 + \cdots + \theta_d x_d
-\;=\; \sum_{j=0}^{d} \theta_j x_j,
-$$
+$h_\theta(x) \;=\; \theta_0 x_0 + \theta_1 x_1 + \cdots + \theta_d x_d\;=\; \sum_{j=0}^{d} \theta_j x_j,$
 
 with the reminder:
 
-$$
-x_0 = 1.
-$$
+$x_0 = 1.$
 
 This now supports high-dimensional inputs. High-dimensional spaces behave differently than low-dimensional ones, and they’re often where machine learning gets interesting. In many modern settings, we embed data into a vector space (sometimes with hundreds of dimensions) and then train a linear model on top. In this course, for now, the features will be human-interpretable and come directly from the table: given a row $$x^{(i)}$$, we fill in values like size, bedrooms, lot size, and so on, and then compute a prediction.
 
@@ -152,15 +145,7 @@ This now supports high-dimensional inputs. High-dimensional spaces behave differ
 
 To simplify notation, we use column vectors. For the $$i$$-th example, define the feature vector:
 
-$$
-x^{(i)} \;=\;
-\begin{bmatrix}
-x^{(i)}_0 \\
-x^{(i)}_1 \\
-\vdots \\
-x^{(i)}_d
-\end{bmatrix},
-$$
+$x^{(i)} \;=\;\begin{bmatrix}x^{(i)}_0 \\x^{(i)}_1 \\\vdots \\x^{(i)}_d\end{bmatrix},$
 
 where $$x^{(i)}_0 = 1$$ and, for example, $$x^{(i)}_1$$ might be the size feature (like 2104 square feet), $$x^{(i)}_2$$ might be bedrooms, and so on.
 
