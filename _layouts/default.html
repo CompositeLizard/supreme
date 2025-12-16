@@ -105,6 +105,15 @@
     opacity: 0.8;
     font-size: 0.95em;
   }
+  
+  .breadcrumbs{
+    max-width: 45rem;
+    margin: 0 auto 1.25rem auto;
+    font-size: 0.95em;
+    opacity: 0.85;
+    overflow-wrap: anywhere;
+  }
+  .breadcrumbs a{ color: var(--link-color); }
     
   </style>
   
@@ -115,6 +124,8 @@
   </script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
 </head>
+
+  
 <body>
   <header class="site-header">
     <a class="home-link" href="{{ '/' | relative_url }}">Home</a>
@@ -125,4 +136,21 @@
     {{ content }}
   </main>
 </body>
+
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <a href="{{ '/' | relative_url }}">Home</a>
+  {% assign parts = page.url | remove: site.baseurl | split: '/' %}
+  {% assign built = "" %}
+  {% for p in parts %}
+    {% if p != "" %}
+      {% assign built = built | append: "/" | append: p %}
+      {% if forloop.last %}
+        <span> / {{ p | replace: ".html","" }}</span>
+      {% else %}
+        <span> / </span><a href="{{ built | relative_url }}">{{ p }}</a>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+</nav>
+  
 </html>
