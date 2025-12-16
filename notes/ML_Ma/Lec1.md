@@ -1,6 +1,4 @@
 ---
-layout: default
-title: Lec1
 ---
 ## 1) Course Welcome and Instructor Introductions
 
