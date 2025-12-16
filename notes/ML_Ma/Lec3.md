@@ -1,6 +1,6 @@
 ---
 ---
-## Lecture 3 Overview: From Regression to Classification
+## 1) Lecture 3 Overview: From Regression to Classification
 
 Welcome to lecture 3. Today is about **classification and regression**. We’re moving from the first task we did last time—regression, where we fit a line—to a task that looks very similar at first but has a few subtle differences: **classification**.
 
@@ -20,13 +20,11 @@ If you take one message from this lecture, it should be:
 
 As before, there’s an online thread for questions if you prefer asking there. Let’s get started.
 
-## Setup: Least Squares Regression (Reminder)
+## 2) Setup: Least Squares Regression (Reminder)
 
 We begin with our familiar least squares setup. We are given a training set:
 
-$$
-\left\{(x^{(i)}, y^{(i)})\right\}_{i=1}^{n}.
-$$
+$$\left\{ (x^{(i)}, y^{(i)}) \right\}_{i=1}^{n}$$
 
 Here,
 - $$x^{(i)} \in \mathbb{R}^d$$ (or $$\mathbb{R}^{d+1}$$ if we use the bias convention),
@@ -52,13 +50,13 @@ $$
 
 We wrote $$h_\theta(\cdot)$$ in a general form even though it’s just a dot product here, because we’ll reuse the same framework for other models.
 
-## The “Why” Question: Why Squared Error?
+## 3) The “Why” Question: Why Squared Error?
 
 Last time, we minimized a sum of squares without much justification. Today we ask: **why that objective?** The point of answering “why” is that it tells us how to generalize the idea to classification and beyond.
 
 This will introduce one of our favorite distributions in this course: the **Gaussian**.
 
-## A Probabilistic (Generative) View of Linear Regression
+## 4) A Probabilistic (Generative) View of Linear Regression
 
 We now introduce our first true “generative model” view in the course. We assume the data were generated as:
 
@@ -74,7 +72,7 @@ If there were no noise, the data would lie perfectly on a hyperplane. The noise 
 
 This is called a “forward” or “generative” model because it describes how you could generate $$y$$ if you knew $$x$$, $$\theta^*$$, and how to draw $$\varepsilon$$.
 
-## Assumption 1: Noise Has Mean Zero
+## 5) Assumption 1: Noise Has Mean Zero
 
 We typically assume the noise has mean zero:
 
@@ -84,7 +82,7 @@ $$
 
 Intuitively, this says the noise is not systematically pushing outcomes up or down on average. It’s “unbiased.” Operationally, if there *were* a constant bias, the intercept term in $$\theta^*$$ could absorb it.
 
-## Assumption 2: Noise Terms Are Independent
+## 6) Assumption 2: Noise Terms Are Independent
 
 We also often assume the noise terms are independent across examples. A strong form is:
 
@@ -99,7 +97,7 @@ The interpretation is: knowing the error on one training example doesn’t tell 
 
 At this stage, it’s useful to think of these assumptions not as “literally true,” but as “useful modeling assumptions.” In statistical modeling, the question is often less “is this exactly true?” and more “is this a useful approximation, and what do we give up by making it?”
 
-## Assumption 3: Constant Variance (Homoskedastic Noise)
+## 7) Assumption 3: Constant Variance (Homoskedastic Noise)
 
 We also need a way to quantify “how noisy” the data are. A standard assumption is that the noise has a constant variance:
 
@@ -135,7 +133,7 @@ It is a random scalar sampled for each example. A mental model is: for each exam
 
 This noise level matters. If $$\sigma^2$$ is large and your output differences are tiny (like trying to distinguish values that differ by 0.1 when the noise has variance 1), then you’re likely reading into noise. Later we’ll discuss how learning procedures scale with noise.
 
-## Why the Gaussian Appears
+## 8) Why the Gaussian Appears
 
 Here is the key point: if you assume the noise is unbiased (mean 0) and has a fixed variance $$\sigma^2$$, and you do not want to assume anything else (e.g., about higher moments), then a natural and, in a specific sense, *maximally uninformative* choice is the Gaussian distribution.
 
@@ -150,7 +148,7 @@ This means:
 - with mean 0,
 - and variance $$\sigma^2$$.
 
-## Interpreting $$\mathcal{N}(\mu, \sigma^2)$$
+## 9) Interpreting $$\mathcal{N}(\mu, \sigma^2)$$
 
 A normal distribution $$\mathcal{N}(\mu, \sigma^2)$$ is centered at $$\mu$$ and has spread controlled by $$\sigma^2$$ (or equivalently $$\sigma$$, the standard deviation).
 
@@ -167,10 +165,8 @@ $$
 
 (Exact percentages depend on the precise statement and convention; the main point is that the Gaussian is “peaked” around the mean and decays as you move away.)
 
-## Why Gaussians Show Up So Often
+## 10) Why Gaussians Show Up So Often
 
 One reason Gaussians appear frequently is that when you have many small additive effects, the sum tends to look Gaussian (as suggested by the central limit theorem intuition). If noise is the accumulation of many tiny independent disturbances, then modeling it as Gaussian is often reasonable.
 
 If the philosophical justification doesn’t resonate, that’s fine. The Gaussian is a convenient, widely-used model, and it gives us a clean path to derive the squared-error objective and generalize to classification.
-
-```
