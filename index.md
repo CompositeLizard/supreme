@@ -6,5 +6,5 @@ title: Home
 Welcome. This is just for reading.
 
 ## Notes
-- [ML_Ma](notes/ML_Ma)
-- [ML_Ng](notes/ML_Ng)
+- [ML learning course subtitles, by Tengyu Ma](notes/ML_Ma)
+- [ML learning course subtitles, by Andrew Ng](notes/ML_Ng)
