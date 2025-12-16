@@ -39,14 +39,14 @@ Normal equations are not the most important concept in the course, but they’re
 
 Let’s talk about **supervised learning**. This whole block is supervised learning, and it will follow the same general schema.
 
-We want a **prediction function**, which we’ll consistently denote by (h). It maps from some set (\mathcal{X}) to some set (\mathcal{Y}):
+We want a **prediction function**, which we’ll consistently denote by %h5. It maps from some set $\mathcal{X}$ to some set $\mathcal{Y}$:
 
 $h: \mathcal{X} \to \mathcal{Y}.$
 
 Before getting formal, here are examples of what (\mathcal{X}) and (\mathcal{Y}) could be:
 
-* $\mathcal{X}$: images, and (\mathcal{Y}): labels like “cat,” “dog,” and so on. “Does this image contain a cat?” is the simplest yes/no version.
-* $\mathcal{X}$: text, and (\mathcal{Y}): labels like “hate speech” vs. “not hate speech.” This is an example where we’d like machine learning to do better than it currently does in practice.
+* $\mathcal{X}$: images, and $\mathcal{Y}$: labels like “cat,” “dog,” and so on. “Does this image contain a cat?” is the simplest yes/no version.
+* $\mathcal{X}$: text, and $\mathcal{Y}$: labels like “hate speech” vs. “not hate speech.” This is an example where we’d like machine learning to do better than it currently does in practice.
 * We’ll also use house data, which is a classic statistics and machine learning task.
 
 To make this supervised, we also need a **training set**. Formally, it’s just a set of pairs:
@@ -54,17 +54,17 @@ To make this supervised, we also need a **training set**. Formally, it’s just 
 
 ${(x_1, y_1), (x_2, y_2), \dots, (x_n, y_n)}.$
 
-Each $x_i \in \mathcal{X}$ is an encoding of the input. For images, $x_i$ could be bits, RGB values, or some representation of pixel intensities. For text, it might be ASCII/Unicode or some other representation. Later, we’ll almost always abstract this away and work in a vector space, and we’ll talk about where those vectors come from. Each (y_i \in \mathcal{Y}) is the label.
+Each $x_i \in \mathcal{X}$ is an encoding of the input. For images, $x_i$ could be bits, RGB values, or some representation of pixel intensities. For text, it might be ASCII/Unicode or some other representation. Later, we’ll almost always abstract this away and work in a vector space, and we’ll talk about where those vectors come from. Each $y_i \in \mathcal{Y}$ is the label.
 
-Given the training set, our job is to find a good hypothesis (h). We call it (h) partly because it’s a “hypothesis.”
+Given the training set, our job is to find a good hypothesis $h$. We call it (h) partly because it’s a “hypothesis.”
 
 ## 5) What “Good” Means and Why Generalization Matters
 
-The word “good” will occupy a lot of our attention. Intuitively, a good (h) should do better than random guessing on the examples—if you show me images with cats, I should label most of the cats correctly. Of course, in real machine learning, we don’t get it right all the time, and the models are still useful, so we’ll develop statistical notions like doing well “on average.”
+The word “good” will occupy a lot of our attention. Intuitively, a good $h$ should do better than random guessing on the examples—if you show me images with cats, I should label most of the cats correctly. Of course, in real machine learning, we don’t get it right all the time, and the models are still useful, so we’ll develop statistical notions like doing well “on average.”
 
 There are also more advanced notions of goodness. You might care about how performance varies across groups. You might want the worst-group performance to be as strong as possible, not just average performance. That kind of change typically corresponds to choosing a different loss function, and the math framework can accommodate it with relatively straightforward modifications. For now, we’ll stick to the simplest notion—basic accuracy or error on the task—but keep in mind the framework is broader.
 
-Also, the space of all functions from (\mathcal{X}) to (\mathcal{Y}) is enormous. We can’t search over all possible functions, so we’ll restrict the class of functions we consider. That restriction is a big part of model design.
+Also, the space of all functions from $\mathcal{X}) to (\mathcal{Y}$ is enormous. We can’t search over all possible functions, so we’ll restrict the class of functions we consider. That restriction is a big part of model design.
 
 A key point—sometimes counterintuitive at first—is that we don’t just care about predicting the labels of the training examples we already have. We care about predicting well on **new** inputs we haven’t seen before. If I take a new picture on my phone, I don’t care whether the model memorized my last picture; I care whether it works on the new one. The new image will be similar in some sense, but it will look different.
 
@@ -74,8 +74,8 @@ That idea forces an assumption: we think of the training examples as drawn from 
 
 This is just terminology:
 
-* If (\mathcal{Y}) is **discrete**, we call it **classification**. The simplest case is binary classification (yes/no). You can also have many classes (car, plane, truck, specific car model, etc.).
-* If (\mathcal{Y}) is **continuous**, we call it **regression**.
+* If $\mathcal{Y}$ is **discrete**, we call it **classification**. The simplest case is binary classification (yes/no). You can also have many classes (car, plane, truck, specific car model, etc.).
+* If $\mathcal{Y}$ is **continuous**, we call it **regression**.
 
 Today we’ll focus on regression using house prices. In lecture three, we’ll switch to classification, which has subtle differences.
 
@@ -91,15 +91,15 @@ You can also look at another feature like number of bedrooms and plot price agai
 
 ## 8) Our Goal: Learn a Hypothesis (h)
 
-Going back to the abstraction: we want a hypothesis (h) that maps from lot area (or square footage) to sale price. That is, you show me the input (x), and I output a predicted price (h(x)).
+Going back to the abstraction: we want a hypothesis $h$ that maps from lot area (or square footage) to sale price. That is, you show me the input $x$, and I output a predicted price $h(x)$.
 
-There are infinitely many possible functions that could do this—scramble, memorize, or consult an oracle. So we need a representation for (h) that restricts the class of functions we consider.
+There are infinitely many possible functions that could do this—scramble, memorize, or consult an oracle. So we need a representation for $h$ that restricts the class of functions we consider.
 
 ## 9) The Linear Model: A First Restricted Hypothesis Class
 
 We’ll start with a class of models called “linear.” If you’re a stickler, you’ll notice this is technically an affine function; I’m going to allow that mild abuse of language for now.
 
-With one feature (x_1) (say square footage), the model is:
+With one feature $x_1$ (say square footage), the model is:
 
 $h(x) = \theta_0 + \theta_1 x_1.$
 
