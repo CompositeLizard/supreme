@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Home
+title: Note
 ---
 
 Welcome. This is just for reading.
