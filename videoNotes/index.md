@@ -6,3 +6,4 @@ title: Notes
 - [How to Conquer and Excel at Small Talk ](Conquer-Excel-Small-Talk.md)
 - [Jensen Huang: On Industrial Policy, The AI Revolution, and American Optimism](Jensen-Huang-Industrial-Policy-AI-Revolution-American-Optimism.md)
 - [Math, Money, and Philanthropy: The Story of My Life](Math-Money-Philanthropy-Story-of-My-Life.md)
+- [The Bill Gates Method: How to Read, Remember, and Master New Topics](Bil-Gates-Method-Reading.md)
