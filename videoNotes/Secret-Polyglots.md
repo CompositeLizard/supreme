@@ -1,5 +1,5 @@
-***
-
+---
+---
 # The Secret of Polyglots: How to Learn a New Language Every Two Years
 
 I love learning foreign languages. In fact, I love it so much that I like to learn a new language every two years, currently working on my eighth one.
