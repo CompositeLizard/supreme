@@ -1,8 +1,5 @@
 ---
 ---
-
-***
-
 # The Art of Small Talk: How to Do It, Why You Need It, and Everything in Between
 
 **Location:** *Vienna, Austria*
