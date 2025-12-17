@@ -1,6 +1,5 @@
-
-***
-
+---
+---
 # Stanford Engineering Centennial Closing Event: A Conversation with Sergey Brin and President John Levin
 
 **Location:** Stanford University
