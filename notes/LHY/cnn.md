@@ -1,3 +1,5 @@
+---
+---
 ## 1) Introduction to Network Architecture and Convolutional Neural Networks
 
 In this lecture, we discuss the design of network architectures, starting with one of the most important and widely used architectures: the convolutional neural network, or CNN. CNNs are especially designed for processing images. Through this example, the goal is to help you understand not only what a network architecture looks like, but also the intuition behind its design.
