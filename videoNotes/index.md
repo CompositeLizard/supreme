@@ -8,4 +8,5 @@ title: Notes
 - [Math, Money, and Philanthropy: The Story of My Life](Math-Money-Philanthropy-Story-of-My-Life.md)
 - [The Bill Gates Method: How to Read, Remember, and Master New Topics](Bil-Gates-Method-Reading.md)
 - [Why I Live a Simple Life](why-simple-life.md)
+- [Stanford Engineering Centennial Closing Event: A Conversation with Sergey Brin and President John Levin](Conversation-Sergey-Brin-John-Levin.md)
 - [TED - The secrets of learning a new language](Secret-Polyglots.md)
