@@ -1,4 +1,5 @@
-Here is the text organized into an article format. The original wording, meaning, and length have been preserved, including personal asides and promotional details.
+---
+---
 
 ***
 
