@@ -8,3 +8,4 @@ title: Notes
 - [Math, Money, and Philanthropy: The Story of My Life](Math-Money-Philanthropy-Story-of-My-Life.md)
 - [The Bill Gates Method: How to Read, Remember, and Master New Topics](Bil-Gates-Method-Reading.md)
 - [Why I Live a Simple Life](why-simple-life.md)
+- [The secrets of learning a new language](Secret-Polyglots.md)
