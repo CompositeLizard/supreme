@@ -12,6 +12,7 @@ title: Notes
 - [Ella - Why I Don’t Practice Listening or Speaking](Not-Practice-Listening-Speaking.md)
 - [Ella - How to Stand Out (In a World Full of Qualified People)](How-to-Stand-Out.md)
 - [Ella - The Power of Accountability: Why I Started French Classes and Hiring Coaches](Power-of-Accountability.md)
+- [Ella - How to Make Yourself Do Something Difficult](Do-Something-Difficult.md)
 - [Jensen - On Industrial Policy, The AI Revolution, and American Optimism](Jensen-Huang-Industrial-Policy-AI-Revolution-American-Optimism.md)
 - [Simons - Math, Money, and Philanthropy: The Story of My Life](Math-Money-Philanthropy-Story-of-My-Life.md)
 - [Gates - The Bill Gates Method: How to Read, Remember, and Master New Topics](Bil-Gates-Method-Reading.md)
