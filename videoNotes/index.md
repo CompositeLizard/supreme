@@ -8,6 +8,7 @@ title: Notes
 - [Ella - Why I Never Went to an English Corner](English-Corner.md)
 - [Ella - How to Keep Going: 7 Mindset Tips for Learning a Language](How-Keep-Going-Mindset-Tip.md)
 - [Ella - The Truth About "Thinking in English": Why It’s Hard and Why Beginners Should Wait](Thinking-English.md)
+- [Ella - Why You Can't Speak Fluent English (Even With a High Test Score](Cannot-Speak-Fluent-English.md)
 - [Jensen - On Industrial Policy, The AI Revolution, and American Optimism](Jensen-Huang-Industrial-Policy-AI-Revolution-American-Optimism.md)
 - [Simons - Math, Money, and Philanthropy: The Story of My Life](Math-Money-Philanthropy-Story-of-My-Life.md)
 - [Gates - The Bill Gates Method: How to Read, Remember, and Master New Topics](Bil-Gates-Method-Reading.md)
