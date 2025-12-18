@@ -5,6 +5,7 @@ title: Notes
 - [Rodica - Why I Had to Learn Small Talk](why-i-had-to-learn-small-talk.md)
 - [Ella - How to Conquer and Excel at Small Talk ](Conquer-Excel-Small-Talk.md)
 - [Ella - Counter-Intuitive Strategies for Learning a Brand New Language](counterintuitive-ways.md)
+- [Ella - Why I Never Went to an English Corner](English-Corner.md)
 - [Jensen - On Industrial Policy, The AI Revolution, and American Optimism](Jensen-Huang-Industrial-Policy-AI-Revolution-American-Optimism.md)
 - [Simons - Math, Money, and Philanthropy: The Story of My Life](Math-Money-Philanthropy-Story-of-My-Life.md)
 - [Gates - The Bill Gates Method: How to Read, Remember, and Master New Topics](Bil-Gates-Method-Reading.md)
